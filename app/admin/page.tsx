@@ -14,7 +14,7 @@ export default async function AdminPage() {
         <header className="mb-8 flex flex-col gap-5 border-b border-[#D4AF37]/30 pb-6 md:flex-row md:items-center md:justify-between">
           <div>
             <p className="text-xs uppercase tracking-[0.18em] text-[#C8C0B3]">Admin dashboard</p>
-            <h1 className="mt-2 font-serif text-4xl text-[#F8F4EC]">WILL-SCENT</h1>
+            <h1 className="mt-2 font-serif text-4xl text-[#F8F4EC]">Will-Scent Perfumery</h1>
           </div>
           <form action="/api/admin/logout" method="POST">
             <button

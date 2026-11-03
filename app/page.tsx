@@ -17,7 +17,7 @@ export default function Home() {
           <Link href="/" className="inline-flex items-center justify-center rounded-full bg-[#0A0A0A]/30 p-1 shadow-[0_8px_24px_rgba(0,0,0,0.3)]">
             <Image
               src="/logo1.png"
-              alt="WILL-SCENT logo"
+              alt="Will-Scent Perfumery logo"
               width={200}
               height={80}
               priority
@@ -47,28 +47,28 @@ export default function Home() {
       <main>
         <section className="relative isolate overflow-hidden bg-[#0A0A0A] text-[#F8F4EC]">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(212,175,55,0.18),transparent_50%)]" />
-          <div
-            className="absolute inset-0 opacity-60"
-            style={{
-              backgroundImage:
-                "linear-gradient(120deg, rgba(8,8,8,0.9), rgba(8,8,8,0.62)), url('https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=1600&q=80')",
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
+          <Image
+            src="/bg-img1.jpeg"
+            alt="Will-Scent Perfumery gift bag and perfume"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center"
           />
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,8,8,0.88)_0%,rgba(8,8,8,0.68)_55%,rgba(8,8,8,0.36)_100%)]" />
 
           <div className="relative mx-auto flex min-h-screen max-w-6xl items-center px-4 pb-16 pt-28 sm:px-6 lg:px-8">
             <div className="grid w-full gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
               <div className="max-w-xl">
                 <p className="mb-4 text-xs font-medium uppercase tracking-[0.32em] text-[#E6C875]">
-                  AN EXPERIENCE IN FRAGRANCE
+                  LUXURY YOU CAN SMELL
                 </p>
                 <h1 className="max-w-lg font-serif text-5xl leading-none text-[#F8F4EC] sm:text-6xl lg:text-7xl">
                   Something Beautiful Is Taking Shape.
                 </h1>
-                <p className="mt-5 text-xl text-[#F8F4EC]/85">WILL-SCENT is coming soon.</p>
+                <p className="mt-5 text-xl text-[#F8F4EC]/85">Will-Scent Perfumery is coming soon.</p>
                 <p className="mt-4 max-w-md text-base leading-7 text-[#C8C0B3]">
-                  Discover a world of captivating fragrances, carefully selected for those who believe that every scent tells a story.
+                  A considered collection of distinctive perfumes, chosen for their character and lasting impression.
                 </p>
 
                 <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
@@ -79,7 +79,7 @@ export default function Home() {
                     Join the Waitlist
                     <ArrowDown className="h-4 w-4" />
                   </a>
-                  <p className="text-sm text-[#C8C0B3]">Be among the first to experience WILL-SCENT.</p>
+                  <p className="text-sm text-[#C8C0B3]">Be among the first to discover Will-Scent Perfumery.</p>
                 </div>
               </div>
 
@@ -89,7 +89,7 @@ export default function Home() {
                     <div className="flex h-16 w-16 items-center justify-center overflow-hidden rounded-full border border-[#D4AF37]/40 bg-[#D4AF37]/10 p-1">
                       <Image
                         src="/logo2.jpg"
-                        alt="WILL-SCENT brand mark"
+                        alt="Will-Scent Perfumery brand mark"
                         width={64}
                         height={64}
                         className="h-full w-full rounded-full object-cover"
@@ -97,11 +97,11 @@ export default function Home() {
                     </div>
                     <div>
                       <p className="text-xs uppercase tracking-[0.18em] text-[#C8C0B3]">Premier launch</p>
-                      <p className="font-serif text-2xl text-[#F8F4EC]">WILL-SCENT</p>
+                      <p className="font-serif text-2xl text-[#F8F4EC]">Will-Scent Perfumery</p>
                     </div>
                   </div>
                   <p className="mt-4 max-w-xs text-sm leading-6 text-[#C8C0B3]">
-                    A refined selection of premium perfumes and fragrance oils crafted for lasting impressions.
+                    A refined selection of perfumes for the moments you want to be remembered.
                   </p>
                 </div>
               </div>
@@ -111,16 +111,15 @@ export default function Home() {
 
         <section id="about" className="border-t border-[#D4AF37]/20 bg-[#0A0A0A] px-4 py-16 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-6xl grid gap-10 lg:grid-cols-[1fr_1.2fr] lg:items-center">
-            <div className="overflow-hidden rounded-[1.75rem] border border-[#D4AF37]/25 bg-[#171717]">
-              <div
-                className="h-[420px] w-full"
-                style={{
-                  backgroundImage:
-                    "linear-gradient(180deg, rgba(10,10,10,0.14), rgba(10,10,10,0.64)), url('https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=1200&q=80')",
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                }}
+            <div className="relative h-[420px] overflow-hidden rounded-[1.75rem] border border-[#D4AF37]/25 bg-[#171717]">
+              <Image
+                src="/image2.jpeg"
+                alt="Will-Scent Perfumery perfume bottle"
+                fill
+                sizes="(max-width: 1024px) 100vw, 45vw"
+                className="object-cover object-center"
               />
+              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(10,10,10,0.04),rgba(10,10,10,0.32))]" />
             </div>
 
             <div>
@@ -129,7 +128,7 @@ export default function Home() {
                 More Than a Fragrance. An Impression.
               </h2>
               <p className="mt-5 max-w-xl text-lg leading-8 text-[#C8C0B3]">
-                At WILL-SCENT, we believe fragrance is an expression of individuality. Our upcoming collection is being curated for those who appreciate distinctive scents, lasting impressions, and the art of perfumery.
+                Will-Scent Perfumery brings together distinctive perfumes selected for their character, depth, and memorable presence.
               </p>
             </div>
           </div>
@@ -140,10 +139,10 @@ export default function Home() {
             <div className="max-w-md">
               <p className="text-xs uppercase tracking-[0.24em] text-[#E6C875]">Join us</p>
               <h2 className="mt-4 font-serif text-4xl leading-tight text-[#F8F4EC] sm:text-5xl">
-                Be First to Discover WILL-SCENT.
+                Be First to Discover Will-Scent Perfumery.
               </h2>
               <p className="mt-5 text-lg leading-8 text-[#C8C0B3]">
-                Join our launch list and be among the first to know when our fragrance collection becomes available.
+                Join our launch list and be among the first to know when our perfume collection becomes available.
               </p>
             </div>
 
@@ -157,7 +156,7 @@ export default function Home() {
           <div>
             <Image
               src="/logo1.png"
-              alt="WILL-SCENT logo"
+              alt="Will-Scent Perfumery logo"
               width={200}
               height={80}
               className="h-12 w-auto object-contain"
@@ -175,7 +174,7 @@ export default function Home() {
         </div>
 
         <div className="mx-auto mt-6 max-w-6xl border-t border-[#D4AF37]/20 pt-6 text-xs uppercase tracking-[0.18em] text-[#C8C0B3]">
-          © 2025 WILL-SCENT. All rights reserved.
+          © {new Date().getFullYear()} Will-Scent Perfumery. All rights reserved.
         </div>
       </footer>
     </>

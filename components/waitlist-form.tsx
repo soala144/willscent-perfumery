@@ -7,19 +7,6 @@ import { z } from "zod";
 const formSchema = z.object({
   full_name: z.string().trim().min(2, "Please enter your name.").max(150, "Name must be 150 characters or fewer."),
   email: z.string().trim().email("Please enter a valid email address."),
-  whatsapp_number: z
-    .string()
-    .trim()
-    .min(7, "Please enter your WhatsApp number.")
-    .max(30, "WhatsApp number must be 30 characters or fewer.")
-    .regex(/^\+?[0-9\s().-]+$/, "Use digits, spaces, +, parentheses, or hyphens.")
-    .refine(
-      (value) => {
-        const digitCount = value.replace(/\D/g, "").length;
-        return digitCount >= 7 && digitCount <= 15;
-      },
-      "Enter a number with 7 to 15 digits, including country code if possible.",
-    ),
   location: z.string().trim().min(2, "Please tell us where you are located."),
   fragrance_interests: z
     .string()
@@ -31,7 +18,6 @@ export default function WaitlistForm() {
   const [values, setValues] = useState({
     full_name: "",
     email: "",
-    whatsapp_number: "",
     location: "",
     fragrance_interests: "",
     website: "",
@@ -53,7 +39,6 @@ export default function WaitlistForm() {
     const parsed = formSchema.safeParse({
       full_name: values.full_name,
       email: values.email,
-      whatsapp_number: values.whatsapp_number,
       location: values.location,
       fragrance_interests: values.fragrance_interests,
     });
@@ -80,7 +65,6 @@ export default function WaitlistForm() {
         body: JSON.stringify({
           full_name: parsed.data.full_name,
           email: parsed.data.email,
-          whatsapp_number: parsed.data.whatsapp_number,
           location: parsed.data.location,
           fragrance_interests: parsed.data.fragrance_interests,
           website: values.website,
@@ -101,7 +85,6 @@ export default function WaitlistForm() {
       setValues({
         full_name: "",
         email: "",
-        whatsapp_number: "",
         location: "",
         fragrance_interests: "",
         website: "",
@@ -120,9 +103,9 @@ export default function WaitlistForm() {
         </div>
         <h3 className="font-serif text-3xl text-[#F8F4EC]">You&apos;re on the List.</h3>
         <p className="mt-4 text-base leading-7 text-[#C8C0B3]">
-          Thank you for your interest in WILL-SCENT. Your journey into a world of beautiful fragrances begins here.
+          Thank you for your interest in Will-Scent Perfumery. We&apos;ll be in touch as soon as the collection is ready.
         </p>
-        <p className="mt-4 text-sm uppercase tracking-[0.18em] text-[#E6C875]">We&apos;ll be in touch when WILL-SCENT officially launches.</p>
+        <p className="mt-4 text-sm uppercase tracking-[0.18em] text-[#E6C875]">Luxury you can smell.</p>
       </div>
     );
   }
@@ -165,26 +148,6 @@ export default function WaitlistForm() {
         </div>
 
         <div>
-          <label htmlFor="whatsapp_number" className="mb-2 block text-sm font-medium uppercase tracking-[0.12em] text-[#C8C0B3]">
-            WhatsApp Number
-          </label>
-          <input
-            id="whatsapp_number"
-            name="whatsapp_number"
-            type="tel"
-            inputMode="tel"
-            autoComplete="tel"
-            value={values.whatsapp_number}
-            onChange={handleFieldChange}
-            placeholder="Include your country code, e.g. +233..."
-            aria-invalid={Boolean(errors.whatsapp_number)}
-            className="w-full rounded-xl border border-[#D4AF37]/30 bg-[#0A0A0A] px-4 py-3.5 text-base text-[#F8F4EC] placeholder:text-[#8a7d6a] outline-none transition focus:border-[#E6C875] focus:ring-2 focus:ring-[#E6C875]/20"
-          />
-          {errors.whatsapp_number ? <p className="mt-2 flex items-center gap-2 text-sm text-[#E7A7A7]"><AlertCircle className="h-4 w-4" />{errors.whatsapp_number}</p> : null}
-          <p className="mt-2 text-xs text-[#C8C0B3]">Include your country code. We&apos;ll use this number to contact you about the launch.</p>
-        </div>
-
-        <div>
           <label htmlFor="location" className="mb-2 block text-sm font-medium uppercase tracking-[0.12em] text-[#C8C0B3]">
             Location
           </label>
@@ -209,13 +172,13 @@ export default function WaitlistForm() {
             name="fragrance_interests"
             value={values.fragrance_interests}
             onChange={handleFieldChange}
-            placeholder="Tell us the perfumes, fragrance oils, or scent profiles you would love us to stock..."
+            placeholder="Tell us which perfumes or scent profiles you would love us to stock..."
             rows={5}
             aria-invalid={Boolean(errors.fragrance_interests)}
             className="w-full rounded-xl border border-[#D4AF37]/30 bg-[#0A0A0A] px-4 py-3.5 text-base text-[#F8F4EC] placeholder:text-[#8a7d6a] outline-none transition focus:border-[#E6C875] focus:ring-2 focus:ring-[#E6C875]/20"
           />
           {errors.fragrance_interests ? <p className="mt-2 flex items-center gap-2 text-sm text-[#E7A7A7]"><AlertCircle className="h-4 w-4" />{errors.fragrance_interests}</p> : null}
-          <p className="mt-2 text-xs text-[#C8C0B3]">Your preferences help us understand the fragrances you&apos;d love to discover.</p>
+          <p className="mt-2 text-xs text-[#C8C0B3]">Your preferences help us choose perfumes you&apos;ll be excited to discover.</p>
         </div>
 
         <div aria-hidden="true" className="hidden">

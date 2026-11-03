@@ -33,7 +33,7 @@ export async function sendCustomerConfirmationEmail(email: string) {
   const result = await resend.emails.send({
     from,
     to: [email],
-    subject: "Welcome to the WILL-SCENT Waitlist.",
+    subject: "Welcome to the Will-Scent Perfumery waitlist.",
     html: `
       <div style="background:#0A0A0A;color:#F8F4EC;font-family:Arial,sans-serif;padding:32px 20px;">
         <div style="max-width:600px;margin:0 auto;background:#171717;border:1px solid #D4AF37;border-radius:18px;padding:30px;">
@@ -41,14 +41,14 @@ export async function sendCustomerConfirmationEmail(email: string) {
             <img src="${siteUrl}/logo1.png" alt="WILL-SCENT" style="max-width:220px;height:auto;border-radius:10px;" />
           </div>
           <div style="height:1px;background:#D4AF37;margin:20px 0;opacity:0.7;"></div>
-          <h1 style="font-size:28px;letter-spacing:0.04em;margin:0 0 14px;text-align:center;color:#F8F4EC;">You're officially on the WILL-SCENT waitlist.</h1>
-          <p style="font-size:16px;line-height:1.7;color:#F8F4EC;text-align:center;">Thank you for joining us. We're excited to introduce you to a world of captivating fragrances.</p>
-          <p style="font-size:16px;line-height:1.7;color:#C8C0B3;text-align:center;">Be among the first to discover our upcoming collection. We'll notify you when WILL-SCENT officially launches.</p>
-          <p style="font-size:14px;line-height:1.7;color:#C8C0B3;text-align:center;margin-top:24px;">With appreciation,<br />The WILL-SCENT Team</p>
+          <h1 style="font-size:28px;letter-spacing:0.04em;margin:0 0 14px;text-align:center;color:#F8F4EC;">You're on the Will-Scent Perfumery list.</h1>
+          <p style="font-size:16px;line-height:1.7;color:#F8F4EC;text-align:center;">Thank you for joining us. Luxury you can smell is on its way.</p>
+          <p style="font-size:16px;line-height:1.7;color:#C8C0B3;text-align:center;">We'll let you know when the perfume collection is ready to discover.</p>
+          <p style="font-size:14px;line-height:1.7;color:#C8C0B3;text-align:center;margin-top:24px;">With appreciation,<br />The Will-Scent Perfumery Team</p>
         </div>
       </div>
     `,
-    text: `You're officially on the WILL-SCENT waitlist. Thank you for joining us. We'll notify you when the brand officially launches.`,
+    text: "You're on the Will-Scent Perfumery list. Thank you for joining us. Luxury you can smell is on its way. We'll let you know when the perfume collection is ready to discover.",
   });
 
   if (result.error) {
@@ -67,7 +67,6 @@ export async function sendCustomerConfirmationEmail(email: string) {
 export async function sendAdminNotificationEmail(input: {
   fullName: string;
   email: string;
-  whatsappNumber: string;
   location: string;
   fragranceInterests: string;
   createdAt: string;
@@ -86,20 +85,18 @@ export async function sendAdminNotificationEmail(input: {
   const resend = new Resend(apiKey);
   const fullNameValue = escapeHtml(input.fullName);
   const emailValue = escapeHtml(input.email);
-  const whatsappNumberValue = escapeHtml(input.whatsappNumber);
   const locationValue = escapeHtml(input.location);
   const fragranceInterestsValue = escapeHtml(input.fragranceInterests);
   const createdAtValue = escapeHtml(input.createdAt);
   const result = await resend.emails.send({
     from,
     to: [adminEmail],
-    subject: "New WILL-SCENT waitlist signup",
+    subject: "New Will-Scent Perfumery waitlist signup",
     html: `
       <div style="background:#0A0A0A;color:#F8F4EC;padding:24px;font-family:Arial,sans-serif;">
-        <h2 style="color:#D4AF37;letter-spacing:0.08em;">New Waitlist Subscriber</h2>
+        <h2 style="color:#D4AF37;letter-spacing:0.08em;">New Will-Scent Perfumery Subscriber</h2>
         <p><strong>Name:</strong> ${fullNameValue}</p>
         <p><strong>Email:</strong> ${emailValue}</p>
-        <p><strong>WhatsApp:</strong> ${whatsappNumberValue}</p>
         <p><strong>Location:</strong> ${locationValue}</p>
         <p><strong>Fragrance interests:</strong> ${fragranceInterestsValue}</p>
         <p><strong>Registration date:</strong> ${createdAtValue}</p>

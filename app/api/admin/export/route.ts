@@ -16,11 +16,10 @@ export async function GET() {
   try {
     const subscribers = await getWaitlistSubscribers();
     const rows = [
-      ["Name", "Email", "WhatsApp number", "Location", "Fragrance interests", "Date joined"],
+      ["Name", "Email", "Location", "Perfume preferences", "Date joined"],
       ...subscribers.map((subscriber) => [
         subscriber.full_name,
         subscriber.email,
-        subscriber.whatsapp_number,
         subscriber.location,
         subscriber.fragrance_interests,
         new Date(subscriber.created_at).toISOString(),

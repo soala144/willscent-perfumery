@@ -15,6 +15,13 @@
       "when": 1793699085066,
       "tag": "0001_conscious_silvermane",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1793705002073,
+      "tag": "0002_lumpy_colossus",
+      "breakpoints": true
     }
   ]
 }

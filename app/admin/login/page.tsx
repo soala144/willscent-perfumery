@@ -44,7 +44,7 @@ export default function AdminLoginPage() {
       <div className="w-full max-w-md rounded-[1.75rem] border border-[#D4AF37]/30 bg-[#171717] p-6 shadow-[0_24px_64px_rgba(0,0,0,0.45)]">
         <div className="mb-6 flex items-center justify-between border-b border-[#D4AF37]/20 pb-4">
           <div>
-            <p className="text-xs uppercase tracking-[0.22em] text-[#C8C0B3]">Admin access</p>
+            <p className="text-xs uppercase tracking-[0.22em] text-[#C8C0B3]">Will-Scent Perfumery · Admin</p>
             <Image
               src="/logo1.png"
               alt="WILL-SCENT logo"

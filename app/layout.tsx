@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "WILL-SCENT Perfumery | Discover Your Signature Scent",
+  title: "Will-Scent Perfumery | Luxury You Can Smell",
   description:
-    "Join the WILL-SCENT waitlist and be among the first to discover our upcoming collection of premium perfumes and fragrance oils.",
+    "Join the Will-Scent Perfumery waitlist and be among the first to discover a distinctive collection of perfumes.",
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
   icons: {
     icon: "/logo1.png",
@@ -23,16 +23,16 @@ export const metadata: Metadata = {
     apple: "/logo1.png",
   },
   openGraph: {
-    title: "WILL-SCENT Perfumery | Discover Your Signature Scent",
+    title: "Will-Scent Perfumery | Luxury You Can Smell",
     description:
-      "Join the WILL-SCENT waitlist and be among the first to discover our upcoming collection of premium perfumes and fragrance oils.",
+      "Join the Will-Scent Perfumery waitlist and be among the first to discover a distinctive collection of perfumes.",
     type: "website",
     images: [
       {
         url: "/logo1.png",
         width: 1200,
         height: 630,
-        alt: "WILL-SCENT",
+        alt: "Will-Scent Perfumery",
       },
     ],
   },

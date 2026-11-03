@@ -14,7 +14,6 @@ export const waitlistSubscribers = pgTable(
     id: uuid("id").primaryKey().defaultRandom(),
     fullName: varchar("full_name", { length: 150 }).notNull(),
     email: varchar("email", { length: 255 }).notNull(),
-    whatsappNumber: varchar("whatsapp_number", { length: 30 }).notNull(),
     location: varchar("location", { length: 255 }).notNull(),
     fragranceInterests: text("fragrance_interests").notNull(),
     createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),

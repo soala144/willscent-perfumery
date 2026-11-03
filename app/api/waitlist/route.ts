@@ -41,7 +41,6 @@ export async function POST(request: Request) {
     const subscriber = await createWaitlistSubscriber({
       full_name: payload.data.full_name,
       email,
-      whatsapp_number: payload.data.whatsapp_number,
       location: payload.data.location,
       fragrance_interests: payload.data.fragrance_interests,
     });
@@ -49,7 +48,7 @@ export async function POST(request: Request) {
     if (!subscriber) {
       return NextResponse.json(
         {
-          message: "You're already on the WILL-SCENT waitlist. We'll be in touch soon.",
+          message: "You're already on the Will-Scent Perfumery waitlist. We'll be in touch soon.",
         },
         { status: 200 },
       );
@@ -69,7 +68,6 @@ export async function POST(request: Request) {
         const adminNotification = await sendAdminNotificationEmail({
           fullName: subscriber.full_name,
           email: subscriber.email,
-          whatsappNumber: subscriber.whatsapp_number,
           location: subscriber.location,
           fragranceInterests: subscriber.fragrance_interests,
           createdAt: new Date(subscriber.created_at).toISOString(),
@@ -86,7 +84,7 @@ export async function POST(request: Request) {
     return NextResponse.json(
       {
         success: true,
-        message: "You're now on the WILL-SCENT waitlist.",
+        message: "You're now on the Will-Scent Perfumery waitlist.",
       },
       { status: 201 },
     );

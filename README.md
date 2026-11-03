@@ -1,6 +1,6 @@
-# WILL-SCENT Perfumery
+# Will-Scent Perfumery
 
-A premium Next.js waitlist experience for the WILL-SCENT fragrance brand.
+A premium Next.js waitlist experience for Will-Scent Perfumery.
 
 ## Overview
 
@@ -37,7 +37,7 @@ Environment variables:
 
 Waitlist registrations are stored in PostgreSQL through Drizzle. Email delivery is attempted only when Resend is configured; a delivery failure does not undo a successful database registration. `ADMIN_NOTIFICATION_EMAIL` is optional and enables the extra business notification.
 
-The waitlist form collects a visitor's full name, email, WhatsApp number, location, and fragrance preferences. New submissions require all fields; WhatsApp numbers may include a country code and common formatting characters. If subscribers exist from before the name and WhatsApp fields were added, those older records receive blank values for the newly added fields.
+The waitlist form collects a visitor's full name, email address, location, and perfume preferences.
 
 `ADMIN_NOTIFICATION_EMAIL` is optional. Run `pnpm admin:setup` to create `ADMIN_PASSWORD_HASH` and `SESSION_SECRET`.
 

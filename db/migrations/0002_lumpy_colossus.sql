@@ -1,0 +1,1 @@
+ALTER TABLE "willscent_waitlist_subscribers" DROP COLUMN "whatsapp_number";

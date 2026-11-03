@@ -15,19 +15,6 @@ export const waitlistSubmissionSchema = z.object({
     .trim()
     .max(255, "Email address is too long.")
     .email("Please enter a valid email address."),
-  whatsapp_number: z
-    .string()
-    .trim()
-    .min(7, "Please enter your WhatsApp number.")
-    .max(30, "WhatsApp number must be 30 characters or fewer.")
-    .regex(/^\+?[0-9\s().-]+$/, "Use digits, spaces, +, parentheses, or hyphens.")
-    .refine(
-      (value) => {
-        const digitCount = value.replace(/\D/g, "").length;
-        return digitCount >= 7 && digitCount <= 15;
-      },
-      "Enter a number with 7 to 15 digits, including country code if possible.",
-    ),
   location: z
     .string()
     .trim()
@@ -46,7 +33,6 @@ export type WaitlistSubscriber = {
   id: string;
   full_name: string;
   email: string;
-  whatsapp_number: string;
   location: string;
   fragrance_interests: string;
   created_at: string;
@@ -64,7 +50,6 @@ function toWaitlistSubscriber(
     id: row.id,
     full_name: row.fullName,
     email: row.email,
-    whatsapp_number: row.whatsappNumber,
     location: row.location,
     fragrance_interests: row.fragranceInterests,
     created_at: row.createdAt.toISOString(),
@@ -78,7 +63,6 @@ export async function createWaitlistSubscriber(submission: WaitlistSubmission) {
     .values({
       fullName: submission.full_name.trim(),
       email: normalizeEmail(submission.email),
-      whatsappNumber: submission.whatsapp_number.trim(),
       location: submission.location.trim(),
       fragranceInterests: submission.fragrance_interests.trim(),
     })

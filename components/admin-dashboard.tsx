@@ -25,7 +25,6 @@ export default function AdminDashboardClient({ subscribers }: { subscribers: Wai
       const haystack = [
         subscriber.full_name,
         subscriber.email,
-        subscriber.whatsapp_number,
         subscriber.location,
         subscriber.fragrance_interests,
       ]
@@ -76,7 +75,7 @@ export default function AdminDashboardClient({ subscribers }: { subscribers: Wai
                 setQuery(event.target.value);
                 setPage(1);
               }}
-              placeholder="Search name, email, WhatsApp, location, or fragrance"
+              placeholder="Search name, email, location, or perfume preference"
               className="w-full rounded-xl border border-[#D4AF37]/30 bg-[#0A0A0A] py-2.5 pl-9 pr-3 text-sm text-[#F8F4EC] placeholder:text-[#8a7d6a] outline-none focus:border-[#E6C875]"
             />
           </div>
@@ -96,7 +95,6 @@ export default function AdminDashboardClient({ subscribers }: { subscribers: Wai
               <tr>
                 <th className="px-3 py-2">Name</th>
                 <th className="px-3 py-2">Email</th>
-                <th className="px-3 py-2">WhatsApp</th>
                 <th className="px-3 py-2">Location</th>
                 <th className="px-3 py-2">Fragrance preferences</th>
                 <th className="px-3 py-2">
@@ -112,7 +110,6 @@ export default function AdminDashboardClient({ subscribers }: { subscribers: Wai
                 <tr key={subscriber.id} className="rounded-xl bg-[#0A0A0A] text-[#F8F4EC]">
                   <td className="rounded-l-xl px-3 py-3 align-top">{subscriber.full_name}</td>
                   <td className="px-3 py-3 align-top">{subscriber.email}</td>
-                  <td className="px-3 py-3 align-top">{subscriber.whatsapp_number}</td>
                   <td className="px-3 py-3 align-top">{subscriber.location}</td>
                   <td className="px-3 py-3 align-top text-[#C8C0B3]">{subscriber.fragrance_interests}</td>
                   <td className="rounded-r-xl px-3 py-3 align-top text-[#C8C0B3]">
