@@ -5,11 +5,8 @@ import { waitlistSubscribers } from "@/db/schema";
 import { z } from "zod";
 
 export const waitlistSubmissionSchema = z.object({
-  full_name: z
-    .string()
-    .trim()
-    .min(2, "Please enter your name.")
-    .max(150, "Name must be 150 characters or fewer."),
+  // Name is no longer asked for on the form; kept optional for older entries.
+  full_name: z.string().trim().max(150, "Name must be 150 characters or fewer.").optional().default(""),
   email: z
     .string()
     .trim()
@@ -23,7 +20,7 @@ export const waitlistSubmissionSchema = z.object({
   fragrance_interests: z
     .string()
     .trim()
-    .min(10, "Tell us the fragrances or scent profiles you would love to discover.")
+    .min(2, "Please tell us at least one fragrance or scent you would like.")
     .max(4000, "Fragrance preferences must be 4,000 characters or fewer."),
 });
 
@@ -61,7 +58,7 @@ export async function createWaitlistSubscriber(submission: WaitlistSubmission) {
   const [row] = await db
     .insert(waitlistSubscribers)
     .values({
-      fullName: submission.full_name.trim(),
+      fullName: (submission.full_name ?? "").trim(),
       email: normalizeEmail(submission.email),
       location: submission.location.trim(),
       fragranceInterests: submission.fragrance_interests.trim(),

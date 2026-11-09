@@ -7,6 +7,20 @@ function csvCell(value: string) {
   return `"${safeValue.replace(/"/g, '""').replace(/\r?\n/g, " ")}"`;
 }
 
+// "2026-11-09 14:05" — sorts correctly and Excel reads it as a date.
+const dateFormatter = new Intl.DateTimeFormat("sv-SE", {
+  timeZone: "Europe/Budapest",
+  year: "numeric",
+  month: "2-digit",
+  day: "2-digit",
+  hour: "2-digit",
+  minute: "2-digit",
+});
+
+function formatDate(value: string) {
+  return dateFormatter.format(new Date(value));
+}
+
 export async function GET() {
   const session = await getAdminSession();
   if (!session) {
@@ -16,13 +30,13 @@ export async function GET() {
   try {
     const subscribers = await getWaitlistSubscribers();
     const rows = [
-      ["Name", "Email", "Location", "Perfume preferences", "Date joined"],
+      ["Email", "Location", "Requested fragrances", "Date joined (Budapest time)", "Name"],
       ...subscribers.map((subscriber) => [
-        subscriber.full_name,
         subscriber.email,
         subscriber.location,
         subscriber.fragrance_interests,
-        new Date(subscriber.created_at).toISOString(),
+        formatDate(subscriber.created_at),
+        subscriber.full_name,
       ]),
     ];
 
@@ -31,7 +45,7 @@ export async function GET() {
     return new Response(`\uFEFF${csv}`, {
       headers: {
         "Content-Type": "text/csv; charset=utf-8",
-        "Content-Disposition": 'attachment; filename="willscent-waitlist.csv"',
+        "Content-Disposition": `attachment; filename="willscent-waitlist-${new Date().toISOString().slice(0, 10)}.csv"`,
         "Cache-Control": "private, no-store",
       },
     });

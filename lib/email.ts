@@ -95,10 +95,10 @@ export async function sendAdminNotificationEmail(input: {
     html: `
       <div style="background:#0A0A0A;color:#F8F4EC;padding:24px;font-family:Arial,sans-serif;">
         <h2 style="color:#D4AF37;letter-spacing:0.08em;">New Will-Scent Perfumery Subscriber</h2>
-        <p><strong>Name:</strong> ${fullNameValue}</p>
+        ${fullNameValue ? `<p><strong>Name:</strong> ${fullNameValue}</p>` : ""}
         <p><strong>Email:</strong> ${emailValue}</p>
         <p><strong>Location:</strong> ${locationValue}</p>
-        <p><strong>Fragrance interests:</strong> ${fragranceInterestsValue}</p>
+        <p><strong>Requested fragrances:</strong> ${fragranceInterestsValue}</p>
         <p><strong>Registration date:</strong> ${createdAtValue}</p>
         <p>Manage subscribers in the admin dashboard: <a href="${siteUrl}/admin">${siteUrl}/admin</a></p>
       </div>

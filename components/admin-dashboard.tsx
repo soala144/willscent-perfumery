@@ -75,7 +75,7 @@ export default function AdminDashboardClient({ subscribers }: { subscribers: Wai
                 setQuery(event.target.value);
                 setPage(1);
               }}
-              placeholder="Search name, email, location, or perfume preference"
+              placeholder="Search email, location or fragrance"
               className="w-full rounded-xl border border-[#D4AF37]/30 bg-[#0A0A0A] py-2.5 pl-9 pr-3 text-sm text-[#F8F4EC] placeholder:text-[#8a7d6a] outline-none focus:border-[#E6C875]"
             />
           </div>
@@ -85,7 +85,7 @@ export default function AdminDashboardClient({ subscribers }: { subscribers: Wai
             className="inline-flex items-center justify-center gap-2 rounded-full border border-[#D4AF37]/50 bg-[#D4AF37] px-4 py-2 text-sm font-medium text-[#0A0A0A] transition hover:bg-[#E6C875]"
           >
             <Download className="h-4 w-4" />
-            Export CSV
+            Export CSV (Excel)
           </a>
         </div>
 
@@ -93,10 +93,9 @@ export default function AdminDashboardClient({ subscribers }: { subscribers: Wai
           <table className="min-w-full border-separate border-spacing-y-2 text-left">
             <thead className="text-xs uppercase tracking-[0.16em] text-[#C8C0B3]">
               <tr>
-                <th className="px-3 py-2">Name</th>
                 <th className="px-3 py-2">Email</th>
                 <th className="px-3 py-2">Location</th>
-                <th className="px-3 py-2">Fragrance preferences</th>
+                <th className="px-3 py-2">Requested fragrances</th>
                 <th className="px-3 py-2">
                   <span className="inline-flex items-center gap-2">
                     Date joined
@@ -108,12 +107,20 @@ export default function AdminDashboardClient({ subscribers }: { subscribers: Wai
             <tbody>
               {pageItems.map((subscriber) => (
                 <tr key={subscriber.id} className="rounded-xl bg-[#0A0A0A] text-[#F8F4EC]">
-                  <td className="rounded-l-xl px-3 py-3 align-top">{subscriber.full_name}</td>
-                  <td className="px-3 py-3 align-top">{subscriber.email}</td>
+                  <td className="rounded-l-xl px-3 py-3 align-top">
+                    {subscriber.email}
+                    {subscriber.full_name ? (
+                      <span className="block text-xs text-[#C8C0B3]">{subscriber.full_name}</span>
+                    ) : null}
+                  </td>
                   <td className="px-3 py-3 align-top">{subscriber.location}</td>
                   <td className="px-3 py-3 align-top text-[#C8C0B3]">{subscriber.fragrance_interests}</td>
                   <td className="rounded-r-xl px-3 py-3 align-top text-[#C8C0B3]">
-                    {new Date(subscriber.created_at).toLocaleDateString()}
+                    {new Date(subscriber.created_at).toLocaleString("en-GB", {
+                      dateStyle: "medium",
+                      timeStyle: "short",
+                      timeZone: "Europe/Budapest",
+                    })}
                   </td>
                 </tr>
               ))}

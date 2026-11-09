@@ -1,49 +1,48 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Cormorant_Garamond, Geist } from "next/font/google";
+import { siteUrl } from "@/lib/site";
 import "./globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
-  subsets: ["latin"],
+  subsets: ["latin", "latin-ext"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const cormorant = Cormorant_Garamond({
+  variable: "--font-cormorant",
+  subsets: ["latin", "latin-ext"],
+  weight: ["500", "600"],
 });
+
+const description =
+  "Discover Will-Scent Perfumery — premium perfume oils and distinctive designer and niche-inspired scent profiles. Join the waitlist for our upcoming launch.";
 
 export const metadata: Metadata = {
-  title: "Will-Scent Perfumery | Luxury You Can Smell",
-  description:
-    "Join the Will-Scent Perfumery waitlist and be among the first to discover a distinctive collection of perfumes.",
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
-  icons: {
-    icon: "/logo1.png",
-    shortcut: "/logo1.png",
-    apple: "/logo1.png",
-  },
+  metadataBase: new URL(siteUrl),
+  title: "Will-Scent Perfumery | Premium Perfume Oils",
+  description,
   openGraph: {
-    title: "Will-Scent Perfumery | Luxury You Can Smell",
-    description:
-      "Join the Will-Scent Perfumery waitlist and be among the first to discover a distinctive collection of perfumes.",
+    title: "Will-Scent Perfumery",
+    description: "Premium perfume oils. Launching soon.",
+    siteName: "Will-Scent Perfumery",
     type: "website",
-    images: [
-      {
-        url: "/logo1.png",
-        width: 1200,
-        height: 630,
-        alt: "Will-Scent Perfumery",
-      },
-    ],
+    locale: "en_GB",
+    url: "/",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Will-Scent Perfumery",
+    description: "Premium perfume oils. Launching soon.",
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#0A0A0A",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
+    <html lang="en" className={`${geistSans.variable} ${cormorant.variable} h-full antialiased`}>
       <body className="min-h-full bg-[#0A0A0A] text-[#F8F4EC]">{children}</body>
     </html>
   );
