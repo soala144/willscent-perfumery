@@ -31,15 +31,13 @@ Environment variables:
 - `ADMIN_NOTIFICATION_EMAIL`: Business inbox for new-signup alerts.
 - `NEXT_PUBLIC_SITE_URL`: Public application URL used by email links and metadata.
 - `ADMIN_EMAIL`: Administrator email for `/admin` access.
-- `ADMIN_PASSWORD`: Plaintext admin password used only for local development. Do not set this in production.
-- `ADMIN_PASSWORD_HASH`: Argon2id password hash used for production admin authentication.
-- `SESSION_SECRET`: Secret used to sign admin session cookies.
+- `ADMIN_PASSWORD`: Password for `/admin` access.
 
 Waitlist registrations are stored in PostgreSQL through Drizzle. Email delivery is attempted only when Resend is configured; a delivery failure does not undo a successful database registration. `ADMIN_NOTIFICATION_EMAIL` is optional and enables the extra business notification.
 
 The waitlist form collects a visitor's full name, email address, location, and perfume preferences.
 
-`ADMIN_NOTIFICATION_EMAIL` is optional. Run `pnpm admin:setup` to create `ADMIN_PASSWORD_HASH` and `SESSION_SECRET`.
+`ADMIN_NOTIFICATION_EMAIL` is optional.
 
 ## Database and Drizzle
 
@@ -54,25 +52,9 @@ pnpm db:migrate
 
 These migrations create the WILLSCENT table and its indexes; they do not drop or modify unrelated database objects. Ensure the Pxxl database credentials have permission to create tables and indexes before applying.
 
-## Admin setup
+## Admin access
 
-Set `ADMIN_EMAIL` and then run the interactive setup command:
-
-```bash
-pnpm admin:setup
-```
-
-The command displays password input as you type, checks for an 8-character minimum and confirmation, creates an Argon2id password hash, generates a random session secret, and saves the password, hash, and session secret to `.env.local` (or `.env` if `.env.local` does not exist). In development the app compares the entered password with `ADMIN_PASSWORD` directly, so it is easy to verify. Production ignores `ADMIN_PASSWORD` and uses `ADMIN_PASSWORD_HASH`. The password you type will be visible on screen; the hash and session secret are not printed.
-
-Restart the Next.js server after setup. Admin login also requires `SESSION_SECRET` to be set; the setup command creates it automatically. Never deploy the plaintext `ADMIN_PASSWORD` variable; configure `ADMIN_PASSWORD_HASH` and `SESSION_SECRET` in the production secret manager instead.
-
-To check whether a password matches the hash currently saved on disk without logging in, run:
-
-```bash
-pnpm admin:verify
-```
-
-The password is visible in the terminal while checking. If the check succeeds but the website still rejects the password, restart the Next.js server to reload `.env.local` or `.env`.
+Set `ADMIN_EMAIL` and `ADMIN_PASSWORD` in `.env` locally and in your host's environment variables, then restart or redeploy. Sign in at `/admin/login`. Use a long, unique password. Changing it logs out all existing admin sessions.
 
 ## Production build
 

@@ -8,12 +8,9 @@
     "start": "next start",
     "lint": "eslint",
     "db:generate": "drizzle-kit generate",
-    "db:migrate": "drizzle-kit migrate",
-    "admin:setup": "node scripts/setup-admin.mjs",
-    "admin:verify": "node scripts/verify-admin-password.mjs"
+    "db:migrate": "drizzle-kit migrate"
   },
   "dependencies": {
-    "argon2": "^0.45.2",
     "date-fns": "^4.4.0",
     "drizzle-kit": "^0.31.11",
     "drizzle-orm": "^0.45.4",
